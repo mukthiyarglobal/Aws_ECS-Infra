@@ -24,4 +24,4 @@ jobs:
          aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Terraform init
-      run: terraform init ./Terraform-ecs
+      run: terraform init -chdir=./Terraform-ecs
