@@ -1,57 +1,26 @@
-name: Terraform Deployment
-
+name: Terraform deployment
 on:
-  workflow_dispatch:
-    inputs:
-
-      resource:
-        type: choice
-        description: choose the resource
-        options:
-        - ./Terraform-ecs
-      action:
-         description: 'Terraform Action to Perform'
-         type: choice
-         options:
-         - Terraform_apply
-         - Terraform_destroy
-
+  push:
+    branches:
+      - main
 jobs:
-  terraform_apply:
-    name: "Terraform_apply"
-    if: ${{ github.event.inputs.action == 'Terraform_apply' }}
+  deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ github.event.inputs.resource }}
+        working-directory: ./Terraform-ecs
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        id: init
-        working-directory: ${{ github.event.inputs.resource }}
-        run: terraform init
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-      
-      - name: Terraform Validate
-        id: validate
-        working-directory: ${{ github.event.inputs.resource }}
-        run: terraform validate -no-color
-
-      - name: Terraform Apply
-        id: apply
-        working-directory: ${{ github.event.inputs.resource }}
-        run: terraform apply -auto-approve 
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.REGION }}
+    
+  
   
     
