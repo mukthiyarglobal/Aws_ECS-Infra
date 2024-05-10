@@ -28,6 +28,9 @@ jobs:
       - name: Terraform plan
         id: validate
         run: terraform plan -no-color
+
+      - name: Execute apply_or_destroy.sh script
+        run: bash apply_destroy.sh
     
   
   
