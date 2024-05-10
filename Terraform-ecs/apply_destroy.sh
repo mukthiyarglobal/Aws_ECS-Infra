@@ -1,14 +1,15 @@
- #!/bin/bash
+#!/bin/bash
 
 # Prompt user for input
-echo "Do you want to apply or destroy infrastructure? (apply/destroy)"
-read -r choice
+read -p "Do you want to apply or destroy infrastructure? (apply/destroy): " choice
 
-# Check user's choice and execute corresponding Terraform command
-if [ "$choice" = "apply" ]; then
-    terraform apply -auto-approve
-elif [ "$choice" = "destroy" ]; then
-    terraform destroy -auto-approve
+# Validate user input
+if [[ "$choice" == "apply" ]]; then
+    echo "Applying infrastructure..."
+    terraform apply -auto-approve ./Terraform-ecs
+elif [[ "$choice" == "destroy" ]]; then
+    echo "Destroying infrastructure..."
+    terraform destroy -auto-approve ./Terraform-ecs
 else
     echo "Invalid choice. Please enter 'apply' or 'destroy'."
     exit 1
