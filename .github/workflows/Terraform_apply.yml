@@ -8,7 +8,7 @@ on:
         type: choice
         description: choose the resource
         options:
-        - ./AWS_ECS-Infra/Terraform-ecs
+        - ./Terraform-ecs
       action:
          description: 'Terraform Action to Perform'
          type: choice
