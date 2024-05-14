@@ -46,11 +46,11 @@ variable "app_count" {
   default     = "1" #choose 2 bcz i have choosen 2 AZ
   description = "numer of docker containers to run"
 }
-variable "ecsTaskExecutionRole" {
-  default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
+#variable "ecsTaskExecutionRole" {
+ # default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
 
-}
-variable "ecsTaskRole" {
-  default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
+#}
+#variable "ecsTaskRole" {
+  #default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
 
-}
+#}
