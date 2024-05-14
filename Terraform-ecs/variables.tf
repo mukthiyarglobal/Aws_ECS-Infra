@@ -42,6 +42,10 @@ variable "fargate_memory" {
   default     = "2048"
   description = "Fargate instance memory to provision (in MiB) not MB"
 }
+variable "ecs_task_execution_role" {
+  default     = "myECcsTaskExecutionRole"
+  description = "ECS task execution role name"
+}
 variable "app_count" {
   default     = "1" #choose 2 bcz i have choosen 2 AZ
   description = "numer of docker containers to run"
