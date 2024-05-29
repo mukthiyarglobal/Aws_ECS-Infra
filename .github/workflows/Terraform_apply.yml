@@ -38,8 +38,8 @@ jobs:
         run: terraform plan -input=false
 
      # On push to "main", build or change infrastructure according to Terraform configuration files
-      - name: Terraform Apply Condition
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      # - name: Terraform Apply Condition
+      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       - name: Terraform Apply
         id: deploy
         run: terraform apply --auto-approve
