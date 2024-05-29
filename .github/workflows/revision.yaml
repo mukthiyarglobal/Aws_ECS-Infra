@@ -1,4 +1,4 @@
-name: Deploy to ECS
+name: Revision Deploy to ECS
 
 on:
   workflow_dispatch:
