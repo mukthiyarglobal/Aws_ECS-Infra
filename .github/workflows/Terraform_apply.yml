@@ -32,7 +32,7 @@ jobs:
       - name: Terraform Format
         run: |
           terraform fmt
-          terraform state rm aws_ecr_repository.ecr-demo
+          # terraform state rm aws_ecr_repository.ecr-demo
         
       # Generates an execution plan for Terraform    
       - name: Terraform plan
