@@ -51,8 +51,10 @@ variable "app_count" {
   description = "numer of docker containers to run"
 }
 variable "ecsTaskExecutionRole" {
+  type        = string
   default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
 }
 variable "ecsTaskRole" {
+  type        = string
   default = "arn:aws:iam::992382516702:role/ecsTaskExecutionRole"
 }
