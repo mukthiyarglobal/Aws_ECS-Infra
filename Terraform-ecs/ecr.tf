@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ecr-demo" {
-  name = "reactrepo"
+  name = "samplerepo"
 }
 
 # resource "aws_ecr_lifecycle_policy" "ecr_policy" {
